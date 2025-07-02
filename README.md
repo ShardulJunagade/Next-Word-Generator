@@ -1,65 +1,61 @@
-# ES-335-Assignment-3-2024-Fall
+# Next Word Generator
 
-## Team Name - Bias Busters
-Team Members:
-1. [Shardul Junagade](https://github.com/ShardulJunagade)
-2. [Soham Gaonkar](https://github.com/Soham-Gaonkar)
-3. [Umang Shikarvar](https://github.com/Umang-Shikarvar)
-4. [Sharvari Mirge](https://github.com/msharvari31)
+This project implements a Next-Word Generator using both MLP and LSTM neural network architectures. All models are trained on the [Cleaned Indian Recipes Dataset](https://www.kaggle.com/datasets/sooryaprakash12/cleaned-indian-recipes-dataset) from Kaggle. 
 
-This repository contains the code for the assignment 3 of the course ES 335: Machine Learning Fall-2024 at IIT Gandhinagar taught by Prof. Nipun Batra.
+It also features an interactive Streamlit web app for text generation, which is also deployed at [Next Word Generator](https://next-word-prediction-sssu.streamlit.app/).
 
-**Total marks: 10**
-
-## Task 1 : Next-Word Prediction [5 marks]
-
-1. Refer to the [notebook](https://nipunbatra.github.io/ml-teaching/notebooks/names.html) on generating names using next-character prediction and modify it for generating text using **next-word prediction**. You have to implement an MLP-based text generator. However, it is recommended to refer to Andrej Karpathy’s blog post on the [Effectiveness of RNNs](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) and his [notebook](https://github.com/karpathy/char-rnn) for additional insights.
-
-2. Visualize the embeddings using t-SNE if using more than 2 dimensions or using a scatter plot if using 2 dimensions and write your observations. 
-
-3. Write a [streamlit](https://streamlit.io/) application that asks users for an input text, and it then predicts the next **k** words or lines. In the streamlit app, you should have controls for modifying context length, embedding dimension, activation function, random seed, etc. You can use any one of the datasets mentioned below.
+## Features
+- **MLP and LSTM Models:** Choose between Multi-Layer Perceptron and LSTM for next-word generation.
+- **Interactive Streamlit App:** User-friendly interface for generating text based on a seed prompt with customizable parameters like context size, embedding dimension, activation function, random seed and temperature.
+- **Pre-trained Models:** No need to retrain; select from pre-trained variants.
+- **Word Embedding Visualization:** Notebooks for t-SNE and other embedding visualizations.
 
 
-**Hints:**
-
-1. For text-based datasets, you can remove special characters except “full stop (.)” so that it can be used to split sentences. However, you cannot ignore special characters for other datasets like for C++ code. You will have to treat text between newlines as a statement. To remove special characters from a line, you can use the following code snippet:
-    ```py
-    import re
-    line = re.sub('[^a-zA-Z0-9 \.]', '', line)
-    ```
-   It will remove everything except alphanumeric characters, space and full-stop.
-
-    
-
-2. Convert the text to lowercase and use unique words to create the vocabulary.  
-3. To create X, and y pairs for training, you can use a similar approach used for next-character prediction. For example:
-
-    ![alt text](image.png)
-
-   You will get something like *“. . . . . \---\> to”* whenever there is a paragraph change. 
-
-4. You may have to use a larger embedding size for words. (For example: 32 or 64\)  
-5. Use a similar model as used for next-character prediction. Here, you may have to increase the size of hidden layers. (For example, 1024).  
-6. For the streamlit app, no need to re-train the model based on the user input. Train two to three variants and accordingly give options to the user.  
-7. For visualizations, you may have to select words with relations like synonyms, antonyms, names and pronouns, verb and adverbs, words with no relations, and so on.  
-8. Think how you would handle the case where words provided by the user in streamlit are not in the vocabulary.  
-9. Use Google Colab or Kaggle for training (use maximum 500-1000 epochs). Start the assignment early, as training takes time. 
-
-**Datasets:**
-
-- Paul Graham essays
-- [Wikipedia](http://prize.hutter1.net/) (English)
-- [Shakespeare](https://cs.stanford.edu/people/karpathy/char-rnn/shakespeare_input.txt)
-- [Leo Tolstoy's War and Peace](https://cs.stanford.edu/people/karpathy/char-rnn/warpeace_input.txt)
-- [The Adventures of Sherlock Holmes, by Arthur Conan Doyle](https://www.gutenberg.org/files/1661/1661-0.txt)
-- [Maths textbook](https://github.com/stacks/stacks-project)
-- Python or C++ code ([Linux Kernel Code](https://cs.stanford.edu/people/karpathy/char-rnn/linux_input.txt))
-- IITGN advisory generation
-- IITGN website generation
-- Generate sklearn docs
-- Notes generation
-- Image generation (ascii art, 0-255)
-- Music Generation
-- Something comparable in spirit but of your choice (do confirm with TA Anupam)
 
 
+## Project Structure
+
+```
+├── assets/
+├── models/
+│   ├── mlp/
+│   └── lstm/
+├── streamlit_app.py
+├── MLP.ipynb
+├── LSTM.ipynb
+├── embeddings.ipynb
+├── README.md
+└── requirements.txt
+```
+
+## Getting Started
+
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ShardulJunagade/Next-Word-Generator.git
+   cd Next-Word-Prediction
+   ```
+2. Install dependencies:
+   ```bash
+   pip install uv
+   uv pip install -r requirements.txt
+   ```
+
+### Running the Streamlit App
+```bash
+streamlit run streamlit_app.py
+```
+The app will open in your browser. Enter a seed text or use the default, select model and parameters, and generate text.
+
+## Notebooks
+- [`MLP.ipynb`](./MLP.ipynb): Data processing, training, and evaluation for the MLP model.
+- [`LSTM.ipynb`](./LSTM.ipynb): Data processing, training, and evaluation for the LSTM model.
+- [`embeddings.ipynb`](./embeddings.ipynb): Visualization of learned word embeddings.
+
+
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
