@@ -1,0 +1,1 @@
+https://www.kaggle.com/datasets/sooryaprakash12/cleaned-indian-recipes-dataset
