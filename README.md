@@ -2,7 +2,7 @@
 
 This project implements a Next-Word Generator using both MLP and LSTM neural network architectures. All models are trained on the [Cleaned Indian Recipes Dataset](https://www.kaggle.com/datasets/sooryaprakash12/cleaned-indian-recipes-dataset) from Kaggle. 
 
-It also features an interactive Streamlit web app for text generation, which is also deployed at [Next Word Generator](https://next-word-prediction-sssu.streamlit.app/).
+It also features an interactive Streamlit web app for text generation, which is also deployed at [Recipe Next Word Generator](https://recipe-next-word-generator.streamlit.app/).
 
 ## Features
 - **MLP and LSTM Models:** Choose between Multi-Layer Perceptron and LSTM for next-word generation.
